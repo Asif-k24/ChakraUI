@@ -1,56 +1,63 @@
+import { EditIcon, ViewIcon } from '@chakra-ui/icons'
 import {
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
     Box,
     // Container,
-    // Heading,
+    Heading,
     Text,
-    SimpleGrid
+    SimpleGrid,
+    Flex,
+    HStack,
+    Button,
+    Divider
 } from '@chakra-ui/react'
+import { useLoaderData } from 'react-router-dom'
+
+export const tasksLoader = async () => {
+    const res = await fetch('http://localhost:3000/tasks')
+    return res.json()
+}
 
 export default function Dashboard() {
 
-    // const boxStyles = {
-    //     p: "10px",
-    //     bg: "purple.400",
-    //     color: "white",
-    //     m: "10px",
-    //     textAlign: "center",
-    //     filter: "blur(2px)",
-    //     ':hover': {
-    //         color: 'black',
-    //         bg: 'blue.300'
-    //     }
-    // }
+    const tasks = useLoaderData() as any[]
 
     return (
-        // <Container as={"section"} maxWidth={"4xl"}>
-        //     <Heading my={"30px"} p={"10px"}>Chakra UI Components</Heading>
-        //     <Text ml={"30px"} mb={"10px"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quidem repellendus sunt mollitia corporis eligendi.</Text>
-        //     <Text ml={"30px"} color={"blue.400"} fontWeight={"bold"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quidem repellendus sunt mollitia corporis eligendi.</Text>
-        //     <Box my={"30px"} p={"20px"} bg={"orange"}>
-        //         <Text color={"white"}>This is a box component</Text>
-        //     </Box>
-        //     <Box sx={boxStyles}>
-        //         Hello Nijja
-        //     </Box>
-        // </Container>
 
-        <SimpleGrid p="10px" columns={4} spacing={10} minChildWidth="170px">
-            <Box bg="white" h="200px" border="1px solid">
-                <Text color={{ base: 'pink.200', md: 'blue', lg: 'green' }}>Hello</Text>
-            </Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
+        <SimpleGrid spacing={10} minChildWidth="250px">
+            {
+                tasks && tasks.map((task: any) => (
+                    <Card key={task.id} borderTop="8px" borderColor={"purple.400"} bg={"white"}>
+                        <CardHeader>
+                            <Flex gap={5}>
+                                <Box>
+                                    <Text>AV</Text>
+                                </Box>
+                                <Box>
+                                    <Heading as="h3" size="sm">{task.title}</Heading>
+                                    <Text>by {task.author}</Text>
+                                </Box>
+                            </Flex>
+                        </CardHeader>
 
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
+                        <CardBody color='gray.500'>
+                            <Text>{task.description}</Text>
+                        </CardBody>
 
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
+                        <Divider borderColor={"gray.200"} />
+
+                        <CardFooter>
+                            <HStack>
+                                <Button variant="ghost" leftIcon={<ViewIcon />}>Watch</Button>
+                                <Button variant="ghost" leftIcon={<EditIcon />}>Comment</Button>
+                            </HStack>
+                        </CardFooter>
+                    </Card>
+                ))
+            }
         </SimpleGrid>
     )
 }
