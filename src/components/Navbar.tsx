@@ -18,7 +18,7 @@ export default function Navbar() {
             <HStack spacing={"20px"}>
                 <Box bg={"gray.200"} p={"10px"}>M</Box>
                 <Text>mario@netninja.dev</Text>
-                <Button colorScheme="purple">Logout</Button>
+                <Button colorScheme="purple" size={"md"}>Logout</Button>
             </HStack>
         </Flex>
 

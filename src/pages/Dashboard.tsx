@@ -2,7 +2,7 @@ import {
     Box,
     // Container,
     // Heading,
-    // Text,
+    Text,
     SimpleGrid
 } from '@chakra-ui/react'
 
@@ -34,21 +34,23 @@ export default function Dashboard() {
         //     </Box>
         // </Container>
 
-        <SimpleGrid p={"10px"} columns={4} spacing={10} minChildWidth={"200px"}>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
+        <SimpleGrid p="10px" columns={4} spacing={10} minChildWidth="170px">
+            <Box bg="white" h="200px" border="1px solid">
+                <Text color={{ base: 'pink.200', md: 'blue', lg: 'green' }}>Hello</Text>
+            </Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
 
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
 
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
-            <Box bg={"white"} h={"200px"} border={"1px solid"}></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
         </SimpleGrid>
     )
 }
