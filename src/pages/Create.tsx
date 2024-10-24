@@ -1,7 +1,20 @@
-import { Box, Button, Checkbox, FormControl, FormHelperText, FormLabel, Input, Textarea } from "@chakra-ui/react";
+import { Box, Button, Checkbox, FormControl, FormHelperText, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
 import { Form, redirect } from "react-router-dom";
 
 export default function Create() {
+
+    const toast = useToast()
+    const showToast = () => {
+        toast({
+            title: 'Form submitted',
+            description: 'Submitted successfully',
+            duration: 5000,
+            isClosable: true,
+            status: 'success',
+            position: 'bottom-right'
+        })
+    }
+
     return (
         <Box maxW='400px'>
             <Form method="post" action="/create">
@@ -29,7 +42,7 @@ export default function Create() {
                     <FormLabel mb="0" ml="10px">Make this a priority task.</FormLabel>
                 </FormControl>
 
-                <Button type="submit" mt="30px">Submit</Button>
+                <Button onClick={showToast} type="submit" mt="30px">Submit</Button>
             </Form>
         </Box>
     )
